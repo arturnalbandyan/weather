@@ -5,9 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 100px;
+  background-image: linear-gradient(to bottom, #f7f5f7b0, #f0dbf1b0);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, p{
+  font-family: 'Ubuntu'
 }

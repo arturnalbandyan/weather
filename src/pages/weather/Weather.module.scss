@@ -1,0 +1,131 @@
+.weatherContainer {
+  font-family: "Arial", sans-serif;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+
+  label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #2196f3;
+    margin: 10px;
+
+    input {
+      position: absolute;
+      opacity: 0;
+
+      + .customCheckbox {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #2196f3;
+        background-color: #fff;
+        border-radius: 4px;
+        margin-right: 10px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 12px;
+          height: 6px;
+          border-width: 0 2px 2px 0;
+          border-style: solid;
+          border-color: #2196f3;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+      }
+
+      &:checked + .customCheckbox::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.searchContainer {
+  display: flex;
+  margin: 10px;
+}
+
+.formContainer {
+  display: flex;
+  border: 2px solid #2196f3;
+  border-radius: 4px;
+  overflow: hidden;
+
+  .searchInput {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+  }
+
+  .searchButton {
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #1565c0;
+    }
+  }
+}
+
+.loadingText {
+  font-size: 20px;
+  margin-top: 20px;
+  color: #007bff;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  border: 8px solid #2196f3;
+  border-radius: 50%;
+  border-top: 8px solid #fff;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

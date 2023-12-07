@@ -1,0 +1,54 @@
+.weatherListContainer {
+  display: flex;
+  flex-direction: column;
+  .containerTitle {
+    padding-left: 20px;
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  .weatherList {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .weatherListItem {
+      width: 18%;
+      img {
+        width: 86px;
+      }
+
+      .title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .weatherDescription {
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      .day {
+        font-weight: 600;
+      }
+
+      .weatheTemp {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      padding: 20px;
+      margin: 10px;
+      background-image: linear-gradient(to bottom, #4c90f4, #ffffff);
+      border-radius: 25px;
+      max-width: 250px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); 
+      }
+    }
+  }
+}

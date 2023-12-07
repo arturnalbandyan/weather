@@ -13,7 +13,7 @@ class Api {
       params: {
         q: city,
         units: unit,
-        appid: "54e323d05616ca13d670cd64f19dbd50",
+        appid: "28d01db276a607cb36f5130b4ac60a37",
       },
     });
   }
@@ -23,7 +23,7 @@ class Api {
       params: {
         q: city,
         units: unit,
-        appid: "54e323d05616ca13d670cd64f19dbd50",
+        appid: "28d01db276a607cb36f5130b4ac60a37",
       },
     });
   }

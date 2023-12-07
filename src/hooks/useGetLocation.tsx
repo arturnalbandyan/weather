@@ -1,9 +1,12 @@
 import { useDispatch } from "react-redux";
 import { getCurrenthWeather, getWeatherList } from "../store/weatherSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 const useGetLocation = (): void => {
   const dispatch = useDispatch();
   const location = localStorage.getItem("location");
+  const { error } = useSelector((state: RootState) => state.weather);
 
   const unit = "metric";
   if (!location && navigator.geolocation) {
@@ -18,8 +21,10 @@ const useGetLocation = (): void => {
           .then((data) => {
             if (data.results && data.results.length > 0) {
               const city = data.results[0].components.city;
-              dispatch(getCurrenthWeather({ city, unit }) as any);
-              dispatch(getWeatherList({ city, unit }) as any);
+              if (!error) {
+                dispatch(getCurrenthWeather({ city, unit }) as any);
+                dispatch(getWeatherList({ city, unit }) as any);
+              }
             } else {
               console.log("City not found");
             }

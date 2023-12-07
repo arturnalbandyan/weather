@@ -29,9 +29,7 @@ export const getCurrenthWeather = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         throw error.response.data.message;
-      } else {
-        throw "An error occurred";
-      }
+      } 
     }
   }
 );
@@ -43,15 +41,14 @@ export const getWeatherList = createAsyncThunk(
       const response = await Api.getWeatherListData({ city, unit });
       if (response.data) {
         localStorage.setItem("location", city);
+        localStorage.setItem("unit", unit);
       }
 
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         throw error.response.data.message;
-      } else {
-        throw "An error occurred";
-      }
+      } 
     }
   }
 );

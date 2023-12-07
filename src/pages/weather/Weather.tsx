@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useLayoutEffect,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
 
@@ -42,7 +47,7 @@ const SearchContainer = ({
   </div>
 );
 
-const Weather: React.FC = () => {
+const Weather = () => {
   useGetLocation();
   const dispatch = useDispatch();
   const [unit, setUnit] = useState("metric");
@@ -50,29 +55,33 @@ const Weather: React.FC = () => {
     (state: RootState) => state.weather
   );
   const [inputValue, setInputValue] = useState("");
-  const request = (location: string) => {
-    dispatch(getCurrenthWeather({ city: location, unit }) as any);
-    dispatch(getWeatherList({ city: location, unit }) as any);
-  };
-  useEffect(() => {
+  const request = useCallback(
+    (location: string) => {
+      dispatch(getCurrenthWeather({ city: location, unit }) as any);
+      dispatch(getWeatherList({ city: location, unit }) as any);
+    },
+    [dispatch, unit]
+  );
+
+  useLayoutEffect(() => {
     const location = localStorage.getItem("location");
     if (location) {
       request(location);
     }
-  }, []);
+  }, [request]);
 
   useEffect(() => {
     if (searchTerm.trim() !== "") {
       request(searchTerm);
     }
-  }, [dispatch, searchTerm, unit]);
+  }, [searchTerm, request]);
 
   useEffect(() => {
     const location = localStorage.getItem("location");
     if (location) {
       request(location);
     }
-  }, [unit]);
+  }, [unit, request]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
